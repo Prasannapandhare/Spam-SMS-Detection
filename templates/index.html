@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Classifier</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="title">Spam Message Classifier</h2>
+        <form method="POST" class="form">
+            <label for="message" class="label">Enter a message:</label><br>
+            <textarea name="message" rows="5" cols="40" required placeholder="Input message here..."
+                class="textarea">{{ message }}</textarea><br><br>
+            <input type="submit" value="Classify" class="submit-btn">
+        </form>
+        {% if prediction %}
+        <h3 class="result">{{ prediction }}</h3>
+        {% endif %}
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector('form');
+            const textarea = form.querySelector('textarea');
+
+            // On form submit, save the message to sessionStorage
+            form.addEventListener('submit', function () {
+                sessionStorage.setItem('message', textarea.value);
+            });
+
+            // Check if there is a saved message in sessionStorage
+            const savedMessage = sessionStorage.getItem('message');
+
+            // If there's a saved message, restore it in the textarea, otherwise keep it empty
+            if (savedMessage) {
+                textarea.value = savedMessage;
+            } else {
+                textarea.value = '';  // Clear textarea if there's no saved message
+            }
+        });
+    </script>
+
+</body>
+
+</html>
