@@ -7,4 +7,3 @@ pandas
 numpy
 joblib
 nltk==3.6.2
-nltk-stopwords==2018.7.23
