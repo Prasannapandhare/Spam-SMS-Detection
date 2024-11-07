@@ -1,8 +1,14 @@
 from flask import Flask, render_template, request
 import pickle
 import re
+import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
+
+try:
+    nltk.data.find("corpora/stopwords")
+except LookupError:
+    nltk.download("stopwords")
 
 # Initialize Flask app
 app = Flask(__name__)
