@@ -1,3 +1,10 @@
 flask
 scikit-learn
 nltk
+Flask
+gunicorn
+jupyter
+pandas
+numpy
+joblib
+scikit-learn
